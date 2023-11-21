@@ -1,0 +1,8 @@
+{
+  "name": "qn2-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "db819934"
+}
