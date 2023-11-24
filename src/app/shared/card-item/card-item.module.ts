@@ -2,10 +2,14 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { InputModalComponent } from "./input-modal.component";
+import { CardItemComponent } from "./card-item.component";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule],
-  declarations: [InputModalComponent],
+  declarations: [CardItemComponent],
+  exports: [
+    CardItemComponent,
+  ],
 })
-export class InputModalModule {}
+export class CardItemModule {
+}

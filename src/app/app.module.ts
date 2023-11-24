@@ -6,7 +6,7 @@ import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { InputModalModule } from "./shared/input-modal/input-modal.module";
+import { InputModalModule } from "./shared/card-item/input-modal/input-modal.module";
 
 @NgModule({
   declarations: [AppComponent],
