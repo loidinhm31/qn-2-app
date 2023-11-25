@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { InfiniteScrollCustomEvent } from "@ionic/angular";
 
 @Component({
   selector: "app-session",
@@ -8,12 +9,28 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class SessionPage implements OnInit {
   public title!: string;
-  private activatedRoute = inject(ActivatedRoute);
+
+  items: string[] = [];
+
   constructor() {}
-
-
 
   ngOnInit() {
     this.title = "Session";
+
+    this.generateItems();
+  }
+
+  private generateItems() {
+    const count = this.items.length + 1;
+    for (let i = 0; i < 18; i++) {
+      this.items.push(`Item ${count + i}`);
+    }
+  }
+
+  onIonInfinite(ev: InfiniteScrollCustomEvent) {
+    this.generateItems();
+    setTimeout(() => {
+      ev.target.complete();
+    }, 500);
   }
 }

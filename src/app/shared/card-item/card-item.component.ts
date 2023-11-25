@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { InputModalComponent } from "./input-modal/input-modal.component";
 import { ModalController } from "@ionic/angular";
 
@@ -8,6 +8,7 @@ import { ModalController } from "@ionic/angular";
   styleUrls: ['./card-item.component.scss'],
 })
 export class CardItemComponent   {
+  @Input() cardTitle: string | undefined;
 
   constructor(private modalController: ModalController) { }
 
