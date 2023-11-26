@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>session-item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="video-container">
+    <div class="overlay">
+      <div class="button-container">
+        <button class="play-button ion-padding-vertical" (click)="playVideo()">Play</button>
+        <button class="skip-button" (click)="skipBackward()">Skip Backward</button>
+        <button class="skip-button" (click)="skipForward()">Skip Forward</button>
+      </div>
+      <div class="timeline" (click)="seekTo($event)">
+        <div class="progress" [style.width]="calculateProgress()"></div>
+      </div>
+    </div>
+    <youtube-player
+      #youtubePlayer
+      videoId="mVjYG9TSN88"
+      suggestedQuality="highres"
+      (ready)="onReady($event)"
+      (stateChange)="onStateChange($event)"
+      [height]="360"
+      [width]="640"
+    ></youtube-player>
+  </div>
+
+</ion-content>
