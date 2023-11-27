@@ -8,7 +8,6 @@ import { SessionItemPageRoutingModule } from "./session-item-routing.module";
 
 import { SessionItemPage } from "./session-item.page";
 import { YouTubePlayerModule } from "@angular/youtube-player";
-import { VideoPlayerComponent } from "../../shared/video-player/video-player.component";
 
 
 @NgModule({
@@ -19,7 +18,7 @@ import { VideoPlayerComponent } from "../../shared/video-player/video-player.com
     SessionItemPageRoutingModule,
     YouTubePlayerModule,
   ],
-  declarations: [SessionItemPage, VideoPlayerComponent],
+  declarations: [SessionItemPage],
 })
 export class SessionItemPageModule {
 }

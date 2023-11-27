@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from "@angular/core";
 import { YouTubePlayer } from "@angular/youtube-player";
 
 @Component({
@@ -6,16 +6,35 @@ import { YouTubePlayer } from "@angular/youtube-player";
   templateUrl: './session-item.page.html',
   styleUrls: ['./session-item.page.scss'],
 })
-export class SessionItemPage implements OnInit {
+export class SessionItemPage implements OnInit, AfterViewInit {
+  public title!: string;
+
   @ViewChild('youtubePlayer') youtubePlayer?: YouTubePlayer;
+
+  playerHeight = 0;
+  playerWidth = 640;
 
   isPlaying = false;
 
+  constructor(private el: ElementRef) {}
+
   ngOnInit() {
+    this.title = "Item";
+
     const tag = document.createElement('script');
 
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
+  }
+
+  ngAfterViewInit() {
+    // Set initial height after the view is initialized
+    this.setPlayerHeight();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.setPlayerHeight();
   }
 
   onStateChange(event: YT.OnStateChangeEvent) {
@@ -24,7 +43,17 @@ export class SessionItemPage implements OnInit {
   }
 
   onReady(player: YT.PlayerEvent) {
+    this.setPlayerHeight(); // Call it once on ready to adjust the player height initially
     // Can control the player here if needed
+  }
+
+  setPlayerHeight() {
+    // Adjust the player height based on the window height
+    const windowHeight = window.innerHeight;
+    const headerHeight = this.el.nativeElement.querySelector('ion-header').offsetHeight;
+    const timelineHeight = this.el.nativeElement.getElementsByClassName('timeline')[0].offsetHeight;
+
+    this.playerHeight = windowHeight - headerHeight - timelineHeight;
   }
 
   playVideo() {
