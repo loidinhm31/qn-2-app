@@ -5,6 +5,10 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ionic": "ionic serve",
+    "ionic-build": "ionic build",
+    "ionic-cap:copy": "ionic cap copy",
+    "ionic-cap:sync": "ionic cap sync",
+    "ionic-cap:copy-sync": "npm run ionic-cap:copy && npm run ionic-cap:sync",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -13,7 +17,8 @@
     "lint": "ng lint",
     "fix:lint": "ng lint --fix",
     "fix:format": "prettier --write ./src",
-    "fix": "npm run fix:format && npm run fix:lint"
+    "fix": "npm run fix:format && npm run fix:lint",
+    "clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm cache clean --force"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +31,7 @@
     "@angular/platform-browser-dynamic": "^17.0.2",
     "@angular/router": "^17.0.2",
     "@angular/youtube-player": "^17.0.1",
+    "@capacitor/android": "5.5.1",
     "@capacitor/app": "5.0.6",
     "@capacitor/core": "5.5.1",
     "@capacitor/haptics": "5.0.6",
