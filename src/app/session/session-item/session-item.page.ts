@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from "@angular/core";
 import { YouTubePlayer } from "@angular/youtube-player";
 
 @Component({
@@ -6,7 +6,7 @@ import { YouTubePlayer } from "@angular/youtube-player";
   templateUrl: "./session-item.page.html",
   styleUrls: ["./session-item.page.scss"],
 })
-export class SessionItemPage implements OnInit, AfterViewInit {
+export class SessionItemPage implements OnInit {
   public title!: string;
 
   @ViewChild("youtubePlayer") youtubePlayer?: YouTubePlayer;
@@ -15,7 +15,7 @@ export class SessionItemPage implements OnInit, AfterViewInit {
   playerWidth = 0;
 
   isPlaying = false;
-
+  private progressInterval: any; // Variable to store the progress update interval
   constructor(private el: ElementRef) {
   }
 
@@ -28,12 +28,6 @@ export class SessionItemPage implements OnInit, AfterViewInit {
     document.body.appendChild(tag);
   }
 
-  ngAfterViewInit() {
-    // Set initial height after the view is initialized
-    this.setPlayerHeight();
-    this.setPlayerWidth();
-  }
-
   @HostListener("window:resize", ["$event"])
   onResize(event: Event) {
     this.setPlayerHeight();
@@ -42,13 +36,10 @@ export class SessionItemPage implements OnInit, AfterViewInit {
 
   onStateChange(event: YT.OnStateChangeEvent) {
     // Check if the video is playing to update the timeline
+    // console.log("state");
     this.isPlaying = event.data === YT.PlayerState.PLAYING;
-  }
-
-  onReady(player: YT.PlayerEvent) {
-    this.setPlayerHeight(); // Call it once on ready to adjust the player height initially
+    this.setPlayerHeight();
     this.setPlayerWidth();
-    // Can control the player here if needed
   }
 
   setPlayerHeight() {
@@ -65,10 +56,6 @@ export class SessionItemPage implements OnInit, AfterViewInit {
     const widthMenuBar = this.el.nativeElement.querySelector("ion-menu") ? this.el.nativeElement.querySelector("ion-menu").offsetWidth : 0;
 
     this.playerWidth = windowWidth - widthMenuBar;
-
-    if (this.playerWidth < this.playerHeight) {
-      this.playerHeight = this.playerHeight / 2;
-    }
   }
 
   playVideo() {
@@ -112,5 +99,4 @@ export class SessionItemPage implements OnInit, AfterViewInit {
       this.youtubePlayer.seekTo(newTime, true);
     }
   }
-
 }

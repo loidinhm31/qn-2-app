@@ -7,35 +7,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div class="video-container">
-
-    <div class="overlay"
-         [style.height.px]=playerHeight
-         [style.width.px]=playerWidth
-    >
-
-      <div class="button-container">
-        <ion-button class="play-button ion-padding-vertical" (click)="playVideo()">Play</ion-button>
-        <ion-button class="skip-button" (click)="skipBackward()">Skip Backward</ion-button>
-        <ion-button class="skip-button" (click)="skipForward()">Skip Forward</ion-button>
+<ion-content>
+    <div class="video-container">
+      <div class="overlay"
+           [style.height.px]=playerHeight
+           [style.width.px]=playerWidth
+      >
+        <div class="button-container">
+          <ion-button class="skip-button" (click)="skipBackward()">
+            <ion-icon name="play-back-outline"></ion-icon>
+          </ion-button>
+          <ion-button class="play-button" (click)="playVideo()">
+            <ion-icon *ngIf="!isPlaying" name="play-outline">
+            </ion-icon>
+            <ion-icon *ngIf="isPlaying" name="pause-outline">
+            </ion-icon>
+          </ion-button>
+          <ion-button class="skip-button" (click)="skipForward()">
+            <ion-icon name="play-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+        <div class="timeline" (click)="seekTo($event)">
+          <div class="progress" [style.width]="calculateProgress()"></div>
+        </div>
       </div>
-      <div class="timeline" (click)="seekTo($event)">
-        <div class="progress" [style.width]="calculateProgress()"></div>
-      </div>
+
+
+      <youtube-player
+        #youtubePlayer
+        videoId="mVjYG9TSN88"
+        suggestedQuality="highres"
+        [width]="playerWidth"
+        [height]="playerHeight"
+        (stateChange)="onStateChange($event)"
+      ></youtube-player>
     </div>
-
-
-    <youtube-player
-      #youtubePlayer
-      videoId="4onNDlHX2p0"
-      suggestedQuality="highres"
-      (ready)="onReady($event)"
-      (stateChange)="onStateChange($event)"
-      [height]="playerHeight"
-      [width]="playerWidth"
-    ></youtube-player>
-  </div>
 
 
 </ion-content>
