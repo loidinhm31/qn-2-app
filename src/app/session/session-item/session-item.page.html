@@ -9,33 +9,33 @@
 
 <ion-content class="ion-padding">
   <div class="video-container">
-<!--      <ion-card>-->
 
-      <div class="overlay" [style.height.px]=playerHeight>
+    <div class="overlay"
+         [style.height.px]=playerHeight
+         [style.width.px]=playerWidth
+    >
 
-          <div class="button-container">
-            <ion-button class="play-button ion-padding-vertical" (click)="playVideo()">Play</ion-button>
-            <ion-button class="skip-button" (click)="skipBackward()">Skip Backward</ion-button>
-            <ion-button class="skip-button" (click)="skipForward()">Skip Forward</ion-button>
-          </div>
-          <div class="timeline" (click)="seekTo($event)">
-            <div class="progress" [style.width]="calculateProgress()"></div>
-          </div>
-
+      <div class="button-container">
+        <ion-button class="play-button ion-padding-vertical" (click)="playVideo()">Play</ion-button>
+        <ion-button class="skip-button" (click)="skipBackward()">Skip Backward</ion-button>
+        <ion-button class="skip-button" (click)="skipForward()">Skip Forward</ion-button>
       </div>
-
-
-        <youtube-player
-          #youtubePlayer
-          videoId="4onNDlHX2p0"
-          suggestedQuality="highres"
-          (ready)="onReady($event)"
-          (stateChange)="onStateChange($event)"
-          [height]="playerHeight"
-          [width]="playerWidth"
-        ></youtube-player>
-<!--      </ion-card>-->
+      <div class="timeline" (click)="seekTo($event)">
+        <div class="progress" [style.width]="calculateProgress()"></div>
+      </div>
     </div>
+
+
+    <youtube-player
+      #youtubePlayer
+      videoId="4onNDlHX2p0"
+      suggestedQuality="highres"
+      (ready)="onReady($event)"
+      (stateChange)="onStateChange($event)"
+      [height]="playerHeight"
+      [width]="playerWidth"
+    ></youtube-player>
+  </div>
 
 
 </ion-content>
