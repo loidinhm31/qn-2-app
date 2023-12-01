@@ -1,4 +1,14 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from "@angular/core";
+import {
+  AfterContentChecked,
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { YouTubePlayer } from "@angular/youtube-player";
 
 @Component({
@@ -16,7 +26,7 @@ export class SessionItemPage implements OnInit {
 
   isPlaying = false;
   private progressInterval: any; // Variable to store the progress update interval
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -40,6 +50,14 @@ export class SessionItemPage implements OnInit {
     this.isPlaying = event.data === YT.PlayerState.PLAYING;
     this.setPlayerHeight();
     this.setPlayerWidth();
+
+    if (this.isPlaying) {
+      this.progressInterval = setInterval(() => {
+        this.cdr.detectChanges(); // Trigger change detection to update the progress bar
+      }, 1000); // Update every second, adjust as needed
+    } else {
+      clearInterval(this.progressInterval); // Clear the interval when the video is paused or stopped
+    }
   }
 
   setPlayerHeight() {
