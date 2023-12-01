@@ -5,9 +5,9 @@ import { SessionItemPage } from "./session-item.page";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: SessionItemPage,
-  }
+  },
 ];
 
 @NgModule({

@@ -3,14 +3,14 @@ import { IonicModule } from "@ionic/angular";
 
 import { InputModalComponent } from "./input-modal.component";
 
-describe('MyModalComponent', () => {
+describe("MyModalComponent", () => {
   let component: InputModalComponent;
   let fixture: ComponentFixture<InputModalComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputModalComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [InputModalComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(InputModalComponent);
@@ -18,7 +18,7 @@ describe('MyModalComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

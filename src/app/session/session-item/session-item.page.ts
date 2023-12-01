@@ -1,14 +1,4 @@
-import {
-  AfterContentChecked,
-  AfterViewChecked,
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostListener,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
+import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, ViewChild } from "@angular/core";
 import { YouTubePlayer } from "@angular/youtube-player";
 
 @Component({
@@ -26,8 +16,10 @@ export class SessionItemPage implements OnInit {
 
   isPlaying = false;
   private progressInterval: any; // Variable to store the progress update interval
-  constructor(private el: ElementRef, private cdr: ChangeDetectorRef) {
-  }
+  constructor(
+    private el: ElementRef,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.title = "Item";
@@ -46,7 +38,6 @@ export class SessionItemPage implements OnInit {
 
   onStateChange(event: YT.OnStateChangeEvent) {
     // Check if the video is playing to update the timeline
-    // console.log("state");
     this.isPlaying = event.data === YT.PlayerState.PLAYING;
     this.setPlayerHeight();
     this.setPlayerWidth();
@@ -71,7 +62,9 @@ export class SessionItemPage implements OnInit {
 
   setPlayerWidth() {
     const windowWidth = window.innerWidth;
-    const widthMenuBar = this.el.nativeElement.querySelector("ion-menu") ? this.el.nativeElement.querySelector("ion-menu").offsetWidth : 0;
+    const widthMenuBar = this.el.nativeElement.querySelector("ion-menu")
+      ? this.el.nativeElement.querySelector("ion-menu").offsetWidth
+      : 0;
 
     this.playerWidth = windowWidth - widthMenuBar;
   }

@@ -7,9 +7,6 @@ import { CardItemComponent } from "./card-item.component";
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, NgOptimizedImage],
   declarations: [CardItemComponent],
-  exports: [
-    CardItemComponent,
-  ],
+  exports: [CardItemComponent],
 })
-export class CardItemModule {
-}
+export class CardItemModule {}

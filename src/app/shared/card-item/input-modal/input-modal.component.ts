@@ -9,8 +9,7 @@ import { ModalController } from "@ionic/angular";
 export class InputModalComponent {
   password: string | undefined;
 
-  constructor(private modalController: ModalController) {
-  }
+  constructor(private modalController: ModalController) {}
 
   cancel() {
     return this.modalController.dismiss(null, "cancel");
@@ -19,6 +18,4 @@ export class InputModalComponent {
   confirm() {
     return this.modalController.dismiss(this.password, "confirm");
   }
-
-
 }

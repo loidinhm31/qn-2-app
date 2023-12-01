@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SessionItemPage } from './session-item.page';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { SessionItemPage } from "./session-item.page";
 
-describe('SessionItemPage', () => {
+describe("SessionItemPage", () => {
   let component: SessionItemPage;
   let fixture: ComponentFixture<SessionItemPage>;
 
@@ -11,7 +11,7 @@ describe('SessionItemPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

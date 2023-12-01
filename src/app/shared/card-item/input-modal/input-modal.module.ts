@@ -9,5 +9,4 @@ import { InputModalComponent } from "./input-modal.component";
   declarations: [InputModalComponent],
   exports: [],
 })
-export class InputModalModule {
-}
+export class InputModalModule {}

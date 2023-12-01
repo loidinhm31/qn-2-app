@@ -11,15 +11,7 @@ import { InputModalModule } from "src/app/shared/card-item/input-modal/input-mod
 import { CardItemModule } from "../shared/card-item/card-item.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SessionPageRoutingModule,
-    InputModalModule,
-    CardItemModule
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, SessionPageRoutingModule, InputModalModule, CardItemModule],
   declarations: [SessionPage],
 })
-export class SessionPageModule {
-}
+export class SessionPageModule {}

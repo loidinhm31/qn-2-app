@@ -14,17 +14,14 @@
         <ion-row>
           <ion-col *ngFor="let item of items" size="6" size-sm="4">
             <ion-item>
-              <app-card-item
-                [cardTitle]="item">
-              </app-card-item>
+              <app-card-item [cardTitle]="item"> </app-card-item>
             </ion-item>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-list>
     <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-      <ion-infinite-scroll-content
-      ></ion-infinite-scroll-content>
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>
 </ion-content>

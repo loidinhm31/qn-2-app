@@ -1,18 +1,20 @@
 import { Component, Input } from "@angular/core";
 import { InputModalComponent } from "./input-modal/input-modal.component";
 import { ModalController } from "@ionic/angular";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-card-item',
-  templateUrl: './card-item.component.html',
-  styleUrls: ['./card-item.component.scss'],
+  selector: "app-card-item",
+  templateUrl: "./card-item.component.html",
+  styleUrls: ["./card-item.component.scss"],
 })
-export class CardItemComponent   {
+export class CardItemComponent {
   @Input() cardTitle: string | undefined;
 
-  constructor(private modalController: ModalController,
-              private router: Router) { }
+  constructor(
+    private modalController: ModalController,
+    private router: Router
+  ) {}
 
   async openModal() {
     const modal = await this.modalController.create({
@@ -27,5 +29,4 @@ export class CardItemComponent   {
       this.router.navigate(["/sessions/1"]);
     }
   }
-
 }
