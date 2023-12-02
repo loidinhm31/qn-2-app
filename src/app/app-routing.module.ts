@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: "sessions",
-    loadChildren: () => import("./session/session.module").then(m => m.SessionPageModule),
+    loadChildren: () => import("./pages/session/session.module").then(m => m.SessionPageModule),
   },
 ];
 

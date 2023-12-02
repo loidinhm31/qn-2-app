@@ -11,7 +11,8 @@ export class SessionPage implements OnInit {
 
   items: string[] = [];
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     this.title = "Session";
@@ -31,5 +32,9 @@ export class SessionPage implements OnInit {
     setTimeout(() => {
       ev.target.complete();
     }, 500);
+  }
+
+  trackItems(index: number, itemObject: any) {
+    return itemObject.id;
   }
 }

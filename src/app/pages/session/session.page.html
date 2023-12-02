@@ -12,7 +12,7 @@
     <ion-list>
       <ion-grid>
         <ion-row>
-          <ion-col *ngFor="let item of items" size="6" size-sm="4">
+          <ion-col *ngFor="let item of items;trackBy:trackItems" size="6" size-sm="4">
             <ion-item>
               <app-card-item [cardTitle]="item"> </app-card-item>
             </ion-item>
