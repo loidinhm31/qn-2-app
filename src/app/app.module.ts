@@ -9,12 +9,14 @@ import { AppRoutingModule } from "./app-routing.module";
 import { InputModalModule } from "./shared/ui-components/card-item/input-modal/input-modal.module";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AuthInterceptorService } from "./shared/interceptors/auth-interceptor.service";
+import { IonicStorageModule } from "@ionic/storage-angular";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule, InputModalModule,
     HttpClientModule,
   ],

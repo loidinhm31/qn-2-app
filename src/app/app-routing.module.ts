@@ -1,14 +1,16 @@
-import { NgModule } from "@angular/core";
+import { inject, NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { authGuard } from "./shared/guards/auth.guard";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "sessions",
+    redirectTo: "login",
     pathMatch: "full",
   },
   {
     path: "sessions",
+    canActivate: [() => inject(authGuard).canActivate()],
     loadChildren: () => import("./pages/session/session.module").then(m => m.SessionPageModule),
   },
   {

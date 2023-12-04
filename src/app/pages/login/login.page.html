@@ -18,18 +18,29 @@
 
         <ion-col size-md="9" size="12" class="welcome">
           <ion-card-header>
-            <ion-card-title> Welcome to Ionic Secure Solutions Starter </ion-card-title>
+            <ion-card-title> Welcome to Ionic Secure Solutions Starter</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <ion-input labelPlacement="floating" fill="solid">
-              <div slot="label">Email <ion-text color="danger">(Required)</ion-text></div>
+            <ion-input
+              class="ion-margin-bottom"
+              label="Username"
+              label-placement="floating"
+              fill="solid"
+              placeholder="Enter text">
             </ion-input>
 
-            <ion-input labelPlacement="floating" fill="solid">
-              <div slot="label">Email <ion-text color="danger">(Required)</ion-text></div>
+            <ion-input
+              class="ion-margin-bottom"
+              label="Password"
+              label-placement="floating"
+              fill="solid"
+              placeholder="Enter text">
             </ion-input>
-            <ion-button (click)="login()" shape="round" color="primary"> Sign in </ion-button>
+
+            <ion-button (click)="login()" shape="round" color="primary" class="ion-padding-vertical">
+              Sign in
+            </ion-button>
           </ion-card-content>
         </ion-col>
       </ion-row>
