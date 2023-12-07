@@ -10,7 +10,6 @@ export const authGuard: CanActivateFn = ():
   | UrlTree
   | Promise<boolean | UrlTree>
   | Observable<boolean | UrlTree> => {
-
   const router = inject(Router);
   const authService = inject(AuthenticationService);
 
@@ -21,7 +20,7 @@ export const authGuard: CanActivateFn = ():
       if (isAuth) {
         return true;
       }
-      return router.createUrlTree(["/auth"]);
+      return router.createUrlTree(["/login"]);
     }),
   );
 

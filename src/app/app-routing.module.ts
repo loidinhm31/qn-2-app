@@ -1,4 +1,4 @@
-import { inject, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { authGuard } from "./shared/guards/auth.guard";
 
@@ -10,16 +10,16 @@ const routes: Routes = [
   },
   {
     path: "sessions",
-    canActivate: [() => inject(authGuard).canActivate()],
+    canActivate: [authGuard],
     loadChildren: () => import("./pages/session/session.module").then(m => m.SessionPageModule),
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    path: "login",
+    loadChildren: () => import("./pages/login/login.module").then(m => m.LoginPageModule),
   },
   {
-    path: 'account',
-    loadChildren: () => import('./pages/account/account.module').then( m => m.AccountPageModule)
+    path: "account",
+    loadChildren: () => import("./pages/account/account.module").then(m => m.AccountPageModule),
   },
 ];
 
@@ -27,4 +27,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
