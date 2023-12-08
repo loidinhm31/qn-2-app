@@ -61,7 +61,7 @@ export class AuthenticationService {
     return await this.router.navigate([LOGIN_PAGE]);
   }
 
-  async loadUserData() {
+  async loadUserData(): Promise<User | null> {
     const storedUser = await this.storageService.get(USER_DATA_KEY);
 
     if (storedUser) {
@@ -71,7 +71,7 @@ export class AuthenticationService {
         role: string;
       } = JSON.parse(storedUser);
       if (!userData) {
-        return;
+        return null;
       }
 
       const loadedUser = new User(

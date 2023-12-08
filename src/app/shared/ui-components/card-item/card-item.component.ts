@@ -25,7 +25,6 @@ export class CardItemComponent {
     const { data, role } = await modal.onWillDismiss();
 
     if (role === "confirm") {
-      console.log(data);
       this.router.navigate(["/sessions/1"]);
     }
   }

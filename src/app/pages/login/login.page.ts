@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { LoadingController } from "@ionic/angular";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { IonInput, LoadingController } from "@ionic/angular";
 import { AuthenticationService } from "src/app/shared/services/authentication/authentication.service";
 import { Router } from "@angular/router";
-import { IonInput } from '@ionic/angular';
+import { HOME_PAGE } from "src/app/shared/constants/constant";
+import { User } from "src/app/shared/models/user.model";
 
 @Component({
   selector: "app-login",
@@ -15,22 +16,21 @@ export class LoginPage implements OnInit {
 
   password: string | undefined;
 
-  constructor(private router: Router,
-              private authService: AuthenticationService,
+  constructor(private authenticationService: AuthenticationService,
               private loadingController: LoadingController,
   ) {
   }
 
   async ngOnInit() {
-    console.log("");
+    await this.authenticationService.autoLogin();
   }
 
   async login() {
-    const loadingIndicator = await this.showLoadingIndictator();
+    const loadingIndicator = await this.showLoadingIndicator();
     try {
       const username = this.usernameRef.value;
       const password = this.passwordRef.value;
-      await this.authService.login(username, password);
+      await this.authenticationService.login(username, password);
     } catch (error: any) {
       console.error(error);
     } finally {
@@ -38,9 +38,9 @@ export class LoginPage implements OnInit {
     }
   }
 
-  private async showLoadingIndictator() {
+  private async showLoadingIndicator() {
     const loadingIndicator = await this.loadingController.create({
-      message: "Opening login window...",
+      message: "Authenticating...",
     });
     await loadingIndicator.present();
     return loadingIndicator;
