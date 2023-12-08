@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "./shared/services/authentication/authentication.service";
+import { StorageService } from "./shared/services/storage/storage.service";
 
 @Component({
   selector: "app-root",
@@ -11,9 +12,11 @@ export class AppComponent implements OnInit {
     { title: "User", url: "/users", icon: "mail" },
     { title: "Session", url: "/sessions", icon: "paper-plane" },
   ];
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService, private storage: StorageService) {}
 
   async ngOnInit(): Promise<void> {
+    await this.storage.init();
+
     await this.authenticationService.autoLogin();
   }
 }

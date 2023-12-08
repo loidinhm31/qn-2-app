@@ -6,6 +6,7 @@ import { StorageService } from "src/app/shared/services/storage/storage.service"
 import { HttpClient } from "@angular/common/http";
 // @ts-ignore
 import * as bcrypt from "bcryptjs";
+import { HOME_PAGE, LOGIN_PAGE, USER_DATA_KEY } from "src/app/shared/constants/constant";
 
 
 @Injectable({
@@ -41,20 +42,34 @@ export class AuthenticationService {
   }
 
   async onLoginSuccess(userData: User) {
-    await this.storageService.setItem("userData", JSON.stringify(userData));
+    await this.storageService.set(USER_DATA_KEY, JSON.stringify(userData));
 
-    await this.router.navigate(["/sessions"]);
+    await this.router.navigate([HOME_PAGE]);
   }
 
   async autoLogin() {
-    const storedUSer = await this.storageService.getItem("userData");
+    this.loadUserData().then(
+      (userData) => {
+        if (userData) {
+          this.router.navigate([HOME_PAGE]);
+        }
+      },
+    );
+  }
 
-    if (storedUSer) {
+  async onLogout() {
+    return await this.router.navigate([LOGIN_PAGE]);
+  }
+
+  async loadUserData() {
+    const storedUser = await this.storageService.get(USER_DATA_KEY);
+
+    if (storedUser) {
       const userData: {
         id: string;
         username: string;
         role: string;
-      } = JSON.parse(storedUSer);
+      } = JSON.parse(storedUser);
       if (!userData) {
         return;
       }
@@ -66,11 +81,9 @@ export class AuthenticationService {
       );
 
       this.user.next(loadedUser);
-    }
-  }
 
-  async onLogout() {
-    return await this.router.navigate(["login"]);
+    }
+    return storedUser;
   }
 
   private async hashPassword(password: string | number | null | undefined): Promise<string> {

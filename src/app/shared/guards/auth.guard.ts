@@ -4,6 +4,7 @@ import { map, take } from "rxjs/operators";
 
 import { AuthenticationService } from "src/app/shared/services/authentication/authentication.service";
 import { Observable } from "rxjs";
+import { LOGIN_PAGE } from "src/app/shared/constants/constant";
 
 export const authGuard: CanActivateFn = ():
   | boolean
@@ -19,8 +20,10 @@ export const authGuard: CanActivateFn = ():
       const isAuth = !!user;
       if (isAuth) {
         return true;
+      } else {
+        authService.loadUserData();
       }
-      return router.createUrlTree(["/login"]);
+      return router.createUrlTree([LOGIN_PAGE]);
     }),
   );
 
