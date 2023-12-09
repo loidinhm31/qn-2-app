@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { StorageService } from "./shared/services/storage/storage.service";
+import { AuthenticationService } from "./shared/services/authentication/authentication.service";
+import { map, switchMap, take } from "rxjs/operators";
+import { from } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -12,10 +15,23 @@ export class AppComponent implements OnInit {
     { title: "Session", url: "/sessions", icon: "paper-plane" },
   ];
 
-  constructor(private storage: StorageService) {
+  isAuth: boolean = false;
+
+  constructor(private storage: StorageService,
+              protected authenticationService: AuthenticationService,
+  ) {
   }
 
   async ngOnInit(): Promise<void> {
     await this.storage.init();
+
+    this.authenticationService.user.subscribe((user) => {
+      this.isAuth = !!user;
+
+    })
+  }
+
+  async logout() {
+    await this.authenticationService.onLogout();
   }
 }

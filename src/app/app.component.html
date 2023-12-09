@@ -3,8 +3,21 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>QN2</ion-list-header>
-          <ion-note>Support</ion-note>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-list-header>QN2</ion-list-header>
+                <ion-note>Support</ion-note>
+              </ion-col>
+              <ion-col *ngIf="isAuth">
+                <ion-button
+                  (click)="logout()"
+                  color="primary">
+                  <ion-icon slot="icon-only" name="log-out"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item

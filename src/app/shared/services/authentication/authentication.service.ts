@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { User } from "src/app/shared/models/user.model";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, from } from "rxjs";
 import { StorageService } from "src/app/shared/services/storage/storage.service";
 import { HttpClient } from "@angular/common/http";
 // @ts-ignore
 import * as bcrypt from "bcryptjs";
 import { HOME_PAGE, LOGIN_PAGE, USER_DATA_KEY } from "src/app/shared/constants/constant";
+import { map, switchMap, take } from "rxjs/operators";
 
 
 @Injectable({
@@ -57,7 +58,31 @@ export class AuthenticationService {
     );
   }
 
+  isAuthenticate() {
+    return this.user.pipe(
+      take(1),
+      switchMap(user => {
+        const isAuth = !!user;
+        if (isAuth) {
+          return [true];
+        } else {
+          return from(this.checkAuthentication()).pipe(
+            map(
+              authenticated => {
+                return authenticated;
+              },
+            ),
+          );
+        }
+      }),
+    );
+  }
+
   async onLogout() {
+    await this.storageService.remove(USER_DATA_KEY);
+
+    this.user.next(null);
+
     return await this.router.navigate([LOGIN_PAGE]);
   }
 
@@ -85,6 +110,11 @@ export class AuthenticationService {
     }
     return storedUser;
   }
+
+  private async checkAuthentication() {
+    const userData: User | null = await this.loadUserData();
+    return userData !== null;
+  };
 
   private async hashPassword(password: string | number | null | undefined): Promise<string> {
     // Use bcryptjs to hash the password
