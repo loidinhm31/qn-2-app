@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { authGuard } from "./shared/guards/auth.guard";
-import { HOME_PAGE, LOGIN_PAGE } from "./shared/constants/constant";
+import { HOME_PAGE, LOGIN_PAGE, USER_PAGE } from "./shared/constants/constant";
 
 const routes: Routes = [
   {
@@ -19,8 +19,12 @@ const routes: Routes = [
     loadChildren: () => import("./pages/login/login.module").then(m => m.LoginPageModule),
   },
   {
-    path: "users",
-    loadChildren: () => import("./pages/account/account.module").then(m => m.AccountPageModule),
+    path: USER_PAGE,
+    loadChildren: () => import("./pages/user/user.module").then(m => m.AccountPageModule),
+  },
+  {
+    path: 'management-session',
+    loadChildren: () => import('./pages/management-session/management-session.module').then( m => m.ManagementSessionPageModule)
   },
 ];
 

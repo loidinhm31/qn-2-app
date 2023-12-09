@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { StorageService } from "./shared/services/storage/storage.service";
 import { AuthenticationService } from "./shared/services/authentication/authentication.service";
-import { map, switchMap, take } from "rxjs/operators";
-import { from } from "rxjs";
 
 @Component({
   selector: "app-root",

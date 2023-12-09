@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { IonInput, LoadingController } from "@ionic/angular";
 import { AuthenticationService } from "src/app/shared/services/authentication/authentication.service";
-import { Router } from "@angular/router";
-import { HOME_PAGE } from "src/app/shared/constants/constant";
-import { User } from "src/app/shared/models/user.model";
 
 @Component({
   selector: "app-login",
