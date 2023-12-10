@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { InputModalComponent } from "./input-modal/input-modal.component";
 import { ModalController } from "@ionic/angular";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-card-item",
@@ -10,11 +10,22 @@ import { Router } from "@angular/router";
 })
 export class CardItemComponent {
   @Input() cardTitle: string | undefined;
+  @Input() routerTo: string | undefined;
+  @Input() relativeTo: ActivatedRoute | undefined;
 
   constructor(
     private modalController: ModalController,
-    private router: Router
-  ) {}
+    private router: Router,
+  ) {
+  }
+
+  async openType() {
+    if (this.routerTo?.includes("items")) {
+      this.router.navigate([this.routerTo]);
+    } else {
+      this.openModal()
+    }
+  }
 
   async openModal() {
     const modal = await this.modalController.create({
@@ -25,7 +36,7 @@ export class CardItemComponent {
     const { data, role } = await modal.onWillDismiss();
 
     if (role === "confirm") {
-      this.router.navigate(["/sessions/1"]);
+      this.router.navigate([this.routerTo]);
     }
   }
 }

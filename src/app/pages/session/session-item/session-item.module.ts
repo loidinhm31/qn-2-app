@@ -8,9 +8,17 @@ import { SessionItemPageRoutingModule } from "./session-item-routing.module";
 
 import { SessionItemPage } from "./session-item.page";
 import { YouTubePlayerModule } from "@angular/youtube-player";
+import { CardItemModule } from "../../../shared/ui-components/card-item/card-item.module";
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, SessionItemPageRoutingModule, YouTubePlayerModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SessionItemPageRoutingModule,
+    CardItemModule,
+  ],
   declarations: [SessionItemPage],
 })
-export class SessionItemPageModule {}
+export class SessionItemPageModule {
+}

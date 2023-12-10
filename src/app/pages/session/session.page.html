@@ -14,7 +14,11 @@
         <ion-row>
           <ion-col *ngFor="let item of items;trackBy:trackItems" size="6" size-sm="4">
             <ion-item>
-              <app-card-item [cardTitle]="item"> </app-card-item>
+              <app-card-item
+                [cardTitle]="item.sessionName"
+                [routerTo]="routerTo + item.id"
+              >
+              </app-card-item>
             </ion-item>
           </ion-col>
         </ion-row>

@@ -1,0 +1,43 @@
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  pointer-events: auto;
+}
+
+.button-container {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-button,
+.skip-button {
+  padding: 2px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.timeline {
+  width: 100%;
+  height: 10px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.progress {
+  height: 100%;
+  background-color: #3498db;
+}

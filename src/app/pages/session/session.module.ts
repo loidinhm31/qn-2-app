@@ -14,4 +14,5 @@ import { CardItemModule } from "../../shared/ui-components/card-item/card-item.m
   imports: [CommonModule, FormsModule, IonicModule, SessionPageRoutingModule, InputModalModule, CardItemModule],
   declarations: [SessionPage],
 })
-export class SessionPageModule {}
+export class SessionPageModule {
+}

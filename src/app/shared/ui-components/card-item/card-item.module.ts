@@ -9,4 +9,5 @@ import { CardItemComponent } from "./card-item.component";
   declarations: [CardItemComponent],
   exports: [CardItemComponent],
 })
-export class CardItemModule {}
+export class CardItemModule {
+}
