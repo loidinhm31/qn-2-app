@@ -23,8 +23,8 @@ const routes: Routes = [
     loadChildren: () => import("./pages/user/user.module").then(m => m.AccountPageModule),
   },
   {
-    path: 'management-session',
-    loadChildren: () => import('./pages/management-session/management-session.module').then( m => m.ManagementSessionPageModule)
+    path: "management-session",
+    loadChildren: () => import("./pages/management-session/management-session.module").then(m => m.ManagementSessionPageModule),
   },
 ];
 

@@ -9,8 +9,9 @@ import { AuthenticationService } from "./shared/services/authentication/authenti
 })
 export class AppComponent implements OnInit {
   public appPages = [
-    { title: "User", url: "/users", icon: "mail" },
-    { title: "Session", url: "/sessions", icon: "paper-plane" },
+    { title: "User", url: "/users", icon: "person" },
+    { title: "Session", url: "/sessions", icon: "albums" },
+    { title: "Management Session", url: "/management-session", icon: "file-tray-stacked" },
   ];
 
   isAuth: boolean = false;
