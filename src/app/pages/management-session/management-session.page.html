@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>management-session</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,4 +13,75 @@
       <ion-title size="large">management-session</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
+  <ion-content>
+    <div class="ion-margin">
+      <ion-nav-link
+        router-direction="forward"
+        [component]="component"
+      >
+        <div class="ion-activatable ripple-parent circle">
+          <ion-button fill="clear" (click)="openCreateSessionModal()">
+            <ion-icon name="add-circle" aria-hidden="true"></ion-icon>
+          </ion-button>
+          <ion-ripple-effect type="unbounded">
+          </ion-ripple-effect>
+        </div>
+      </ion-nav-link>
+    </div>
+
+
+    <ion-grid class="ion-text-center ion-margin">
+      <ion-row class="header-row">
+        <ion-col>
+          <ion-text>#</ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-text>Session Name</ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-text>Session Key</ion-text>
+        </ion-col>
+
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let item of items">
+        <ion-col>
+          <ion-text>
+            {{ item.order }}
+          </ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-text>
+            {{ item.sessionName }}
+          </ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-text>
+            {{ item.sessionKey }}
+          </ion-text>
+        </ion-col>
+
+        <ion-col>
+          <div class="ion-activatable ripple-parent circle">
+            <ion-button fill="clear">
+              <ion-icon name="remove-circle" aria-hidden="true"></ion-icon>
+            </ion-button>
+            <ion-ripple-effect type="unbounded">
+            </ion-ripple-effect>
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+  </ion-content>
 </ion-content>

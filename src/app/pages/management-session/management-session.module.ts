@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ManagementSessionPageRoutingModule } from './management-session-routing.module';
 
 import { ManagementSessionPage } from './management-session.page';
+import { CreationModalModule } from "./creation-modal/creation-modal.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    CreationModalModule,
     ManagementSessionPageRoutingModule
   ],
   declarations: [ManagementSessionPage]
