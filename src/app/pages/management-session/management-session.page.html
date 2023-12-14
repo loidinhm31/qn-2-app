@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ title }}</ion-title>
+    <ion-title>{{ 'title' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,23 +14,12 @@
     </ion-toolbar>
   </ion-header>
 
-
   <ion-content>
     <div class="ion-margin">
-      <ion-nav-link
-        router-direction="forward"
-        [component]="component"
-      >
-        <div class="ion-activatable ripple-parent circle">
-          <ion-button fill="clear" (click)="openCreateSessionModal()">
-            <ion-icon name="add-circle" aria-hidden="true"></ion-icon>
-          </ion-button>
-          <ion-ripple-effect type="unbounded">
-          </ion-ripple-effect>
-        </div>
-      </ion-nav-link>
+      <ion-button fill="clear" (click)="openCreateSessionModal()">
+        <ion-icon name="add-circle" aria-hidden="true"></ion-icon>
+      </ion-button>
     </div>
-
 
     <ion-grid class="ion-text-center ion-margin">
       <ion-row class="header-row">
@@ -52,6 +41,7 @@
       </ion-row>
 
       <ion-row *ngFor="let item of items">
+
         <ion-col>
           <ion-text>
             {{ item.order }}
@@ -84,4 +74,5 @@
 
     </ion-grid>
   </ion-content>
+
 </ion-content>

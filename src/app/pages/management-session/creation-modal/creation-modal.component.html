@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Create Session</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <ion-input
+    [(ngModel)]="sessionOrder"
+    fill="solid"
+    label="Session Order"
+    labelPlacement="floating"
+  ></ion-input>
+  <ion-input
+    [(ngModel)]="sessionName"
+    fill="solid"
+    label="Session Name"
+    labelPlacement="floating"
+  ></ion-input>
+  <ion-input
+    [(ngModel)]="sessionKey"
+    fill="solid"
+    label="Session Key"
+    labelPlacement="floating"
+  ></ion-input>
+</ion-content>

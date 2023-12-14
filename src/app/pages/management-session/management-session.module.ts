@@ -1,22 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { ManagementSessionPageRoutingModule } from './management-session-routing.module';
+import { ManagementSessionPageRoutingModule } from "./management-session-routing.module";
 
-import { ManagementSessionPage } from './management-session.page';
+import { ManagementSessionPage } from "./management-session.page";
 import { CreationModalModule } from "./creation-modal/creation-modal.module";
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     CreationModalModule,
-    ManagementSessionPageRoutingModule
+    ManagementSessionPageRoutingModule,
   ],
-  declarations: [ManagementSessionPage]
+  declarations: [ManagementSessionPage],
 })
-export class ManagementSessionPageModule {}
+export class ManagementSessionPageModule {
+}
