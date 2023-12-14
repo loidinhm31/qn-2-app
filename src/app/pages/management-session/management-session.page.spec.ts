@@ -1,5 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ManagementSessionPage } from './management-session.page';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ManagementSessionPage } from "./management-session.page";
 
 describe('ManagementSessionPage', () => {
   let component: ManagementSessionPage;
