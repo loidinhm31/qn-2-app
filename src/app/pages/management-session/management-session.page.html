@@ -41,7 +41,6 @@
       </ion-row>
 
       <ion-row *ngFor="let item of items">
-
         <ion-col>
           <ion-text>
             {{ item.order }}
@@ -49,9 +48,11 @@
         </ion-col>
 
         <ion-col>
-          <ion-text>
-            {{ item.sessionName }}
-          </ion-text>
+          <ion-chip color="success" routerLink="{{ item.id }}">
+            <ion-text>
+              {{ item.sessionName }}
+            </ion-text>
+          </ion-chip>
         </ion-col>
 
         <ion-col>
@@ -61,18 +62,18 @@
         </ion-col>
 
         <ion-col>
-          <div class="ion-activatable ripple-parent circle">
-            <ion-button fill="clear">
-              <ion-icon name="remove-circle" aria-hidden="true"></ion-icon>
-            </ion-button>
-            <ion-ripple-effect type="unbounded">
-            </ion-ripple-effect>
-          </div>
+          <ion-button fill="clear">
+            <ion-icon name="remove-circle" aria-hidden="true"></ion-icon>
+          </ion-button>
         </ion-col>
-
       </ion-row>
-
     </ion-grid>
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalItems]="totalItems"
+      [itemsPerPage]="itemsPerPage"
+      (pageChanged)="onPageChanged($event)"
+    ></app-pagination>
   </ion-content>
 
 </ion-content>

@@ -8,6 +8,10 @@ const routes: Routes = [
     path: "",
     component: ManagementSessionPage,
   },
+  {
+    path: ":id",
+    loadChildren: () => import("./management-session-item/management-session-item.module").then(m => m.ManagementSessionItemPageModule),
+  },
 ];
 
 @NgModule({

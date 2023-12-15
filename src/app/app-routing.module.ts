@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { authGuard } from "./shared/guards/auth.guard";
-import { HOME_PAGE, LOGIN_PAGE, USER_PAGE } from "./shared/constants/constant";
+import { HOME_PAGE, LOGIN_PAGE, MANAGEMENT_SESSION_PAGE, USER_PAGE } from "./shared/constants/constant";
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import("./pages/user/user.module").then(m => m.AccountPageModule),
   },
   {
-    path: "management-session",
+    path: MANAGEMENT_SESSION_PAGE,
     loadChildren: () => import("./pages/management-session/management-session.module").then(m => m.ManagementSessionPageModule),
   },
 ];

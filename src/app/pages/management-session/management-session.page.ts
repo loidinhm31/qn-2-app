@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { CreationModalComponent } from "./creation-modal/creation-modal.component";
 import { Session } from "../../shared/models/session.model";
-
 @Component({
   selector: "app-management-session",
   templateUrl: "./management-session.page.html",
@@ -12,27 +11,35 @@ export class ManagementSessionPage implements OnInit {
   public title!: string;
 
   items: Session[] = [];
-
-  component = ManagementSessionPage;
+  currentPage: number | undefined;
+  itemsPerPage: number | undefined;
+  totalItems: number | undefined;
 
   constructor(private modalController: ModalController) {
   }
 
   ngOnInit() {
     this.title = "Management Session";
+    this.currentPage = 1;
+    this.itemsPerPage = 18;
+    this.totalItems = 52;
 
     this.generateItems();
   }
 
   private generateItems() {
-    const count = this.items.length + 1;
     for (let i = 0; i < 18; i++) {
       this.items.push({
+        id: `${i}`,
         order: i,
         sessionName: `Session ${i}`,
         sessionKey: `session-${i}`,
       });
     }
+  }
+
+  onPageChanged(page: number): void {
+    this.currentPage = page;
   }
 
   async openCreateSessionModal() {

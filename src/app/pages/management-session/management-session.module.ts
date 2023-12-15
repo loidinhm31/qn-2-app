@@ -7,15 +7,18 @@ import { ManagementSessionPageRoutingModule } from "./management-session-routing
 
 import { ManagementSessionPage } from "./management-session.page";
 import { CreationModalModule } from "./creation-modal/creation-modal.module";
+import { PaginationModule } from "../../shared/ui-components/pagination/pagination.module";
+import { PaginationComponent } from "../../shared/ui-components/pagination/pagination.component";
 
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
     CreationModalModule,
+    PaginationModule,
     ManagementSessionPageRoutingModule,
   ],
-  declarations: [ManagementSessionPage],
+  declarations: [ManagementSessionPage, PaginationComponent],
 })
 export class ManagementSessionPageModule {
 }

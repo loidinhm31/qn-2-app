@@ -32,7 +32,6 @@ export class SessionItemPage implements OnInit {
   }
 
   private generateItems() {
-    const count = this.items.length + 1;
     for (let i = 0; i < 18; i++) {
       this.items.push({
         id: `${i}`,
