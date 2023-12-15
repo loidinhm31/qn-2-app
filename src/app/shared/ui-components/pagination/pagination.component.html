@@ -1,17 +1,20 @@
-<ion-row class="ion-justify-content-center">
-  <ion-col class="ion-text-center">
-    <ion-button (click)="onPageChange(currentPage! - 1)" [disabled]="currentPage! === 1">
-      Previous
-    </ion-button>
-  </ion-col>
-  <ion-col *ngFor="let page of Array(totalPages).keys()" class="ion-text-center">
-    <ion-button (click)="onPageChange(page + 1)" [disabled]="currentPage! === page + 1">
-      {{ page + 1 }}
-    </ion-button>
-  </ion-col>
-  <ion-col class="ion-text-center">
-    <ion-button (click)="onPageChange(currentPage! + 1)" [disabled]="currentPage! === totalPages">
-      Next
-    </ion-button>
-  </ion-col>
-</ion-row>
+<div class="pagination-content">
+  <ion-row class="ion-justify-content-center">
+    <ion-col class="ion-text-center">
+      <ion-button (click)="onPageChange(currentPage! - 1)" [disabled]="currentPage! === 1">
+        Previous
+      </ion-button>
+    </ion-col>
+    <ion-col *ngFor="let page of Array(totalPages).keys()" class="ion-text-center">
+      <ion-button (click)="onPageChange(page + 1)" [disabled]="currentPage! === page + 1">
+        {{ page + 1 }}
+      </ion-button>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <ion-button (click)="onPageChange(currentPage! + 1)" [disabled]="currentPage! === totalPages">
+        Next
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</div>
