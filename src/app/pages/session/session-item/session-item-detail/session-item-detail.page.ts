@@ -23,7 +23,6 @@ export class SessionItemDetailPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("getaa");
     this.title = "Item";
 
     const tag = document.createElement("script");
@@ -63,12 +62,9 @@ export class SessionItemDetailPage implements OnInit {
   }
 
   setPlayerWidth() {
-    const windowWidth = window.innerWidth;
-    const widthMenuBar = this.el.nativeElement.querySelector("ion-menu")
-      ? this.el.nativeElement.querySelector("ion-menu").offsetWidth
+    this.playerWidth = this.el.nativeElement.querySelector("ion-toolbar")
+      ? this.el.nativeElement.querySelector("ion-toolbar").offsetWidth
       : 0;
-
-    this.playerWidth = windowWidth - widthMenuBar;
   }
 
   playVideo() {
