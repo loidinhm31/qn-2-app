@@ -1,11 +1,11 @@
-<div class="pagination-content">
+<div class="pagination-content" *ngIf="totalItems && currentPage && itemsPerPage">
   <ion-row class="ion-justify-content-center">
     <ion-col class="ion-text-center">
       <ion-button (click)="onPageChange(currentPage! - 1)" [disabled]="currentPage! === 1">
         Previous
       </ion-button>
     </ion-col>
-    <ion-col *ngFor="let page of Array(totalPages).keys()" class="ion-text-center">
+    <ion-col  *ngFor="let page of pagesArray" class="ion-text-center">
       <ion-button (click)="onPageChange(page + 1)" [disabled]="currentPage! === page + 1">
         {{ page + 1 }}
       </ion-button>
@@ -16,5 +16,4 @@
       </ion-button>
     </ion-col>
   </ion-row>
-
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { CreationModalComponent } from "./creation-modal/creation-modal.component";
 import { Session } from "../../shared/models/session.model";
+
 @Component({
   selector: "app-management-session",
   templateUrl: "./management-session.page.html",
