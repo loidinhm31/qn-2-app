@@ -52,6 +52,12 @@
       </ion-row>
 
     </ion-grid>
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalItems]="totalItems"
+      [itemsPerPage]="itemsPerPage"
+      (pageChanged)="onPageChanged($event)"
+    ></app-pagination>
   </ion-content>
 
 </ion-content>

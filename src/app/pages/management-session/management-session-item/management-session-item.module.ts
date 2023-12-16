@@ -7,14 +7,17 @@ import { IonicModule } from "@ionic/angular";
 import { ManagementSessionItemPageRoutingModule } from "./management-session-item-routing.module";
 
 import { ManagementSessionItemPage } from "./management-session-item.page";
+import { PaginationModule } from "../../../shared/ui-components/pagination/pagination.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ManagementSessionItemPageRoutingModule
+    PaginationModule,
+    ManagementSessionItemPageRoutingModule,
   ],
-  declarations: [ManagementSessionItemPage]
+  declarations: [ManagementSessionItemPage],
 })
-export class ManagementSessionItemPageModule {}
+export class ManagementSessionItemPageModule {
+}

@@ -11,7 +11,9 @@ export class ManagementSessionItemPage implements OnInit {
   public title!: string;
 
   items: SessionItem[] = [];
-
+  currentPage: number | undefined;
+  itemsPerPage: number | undefined;
+  totalItems: number | undefined;
   sessionId: string | undefined;
 
   constructor(private route: ActivatedRoute) {
@@ -24,6 +26,10 @@ export class ManagementSessionItemPage implements OnInit {
     });
 
     this.title = `Management Session ${this.sessionId}`;
+
+    this.currentPage = 1;
+    this.itemsPerPage = 18;
+    this.totalItems = 90;
 
     this.generateItems();
   }
@@ -39,4 +45,7 @@ export class ManagementSessionItemPage implements OnInit {
     }
   }
 
+  onPageChanged(page: number): void {
+    this.currentPage = page;
+  }
 }
