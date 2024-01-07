@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit } from "@angular/core";
 import { StorageService } from "./shared/services/storage/storage.service";
 import { AuthenticationService } from "./shared/services/authentication/authentication.service";
 
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
     this.authenticationService.user.subscribe((user) => {
       this.isAuth = !!user;
-    })
+    });
   }
 
   async logout() {
